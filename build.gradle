@@ -46,6 +46,7 @@ dependencies {
 
 	// Swagger / OpenAPI 3
 	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocVersion}"
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.21.8'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 

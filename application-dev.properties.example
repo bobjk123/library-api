@@ -1,0 +1,35 @@
+# ==============================================================================
+# Development Profile Example (application-dev.properties.example)
+# Copy this file to "application-dev.properties" (git-ignored) or set env vars.
+# ==============================================================================
+
+spring.application.name=library-api
+
+# PostgreSQL Local Database Configuration
+spring.datasource.url=${DB_URL:jdbc:postgresql://localhost:5432/library_db}
+spring.datasource.username=${DB_USERNAME:postgres}
+spring.datasource.password=${DB_PASSWORD:change_me_local_password}
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# JPA / Hibernate (Dev: update schema automatically & format SQL logs)
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# JWT Stateless Security Configuration (Must be at least 256 bits / 32+ chars)
+jwt.secret=${JWT_SECRET:replace_with_a_256_bit_local_development_secret_key}
+jwt.expiration=${JWT_EXPIRATION:86400000}
+
+# Swagger / OpenAPI Documentation (Enabled in dev)
+springdoc.api-docs.enabled=true
+springdoc.swagger-ui.enabled=true
+springdoc.swagger-ui.path=/swagger-ui.html
+
+# Tomcat Connector Locale Limit
+server.tomcat.max-locale-count=50
+
+# Detailed Logging for Development & Debugging
+logging.level.root=INFO
+logging.level.com.gmao.itm.library_api=DEBUG
+logging.level.org.springframework.security=DEBUG

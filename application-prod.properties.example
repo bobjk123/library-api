@@ -1,0 +1,40 @@
+# ==============================================================================
+# Production Profile Example (application-prod.properties.example)
+# Copy to "application-prod.properties" and inject all secrets via env vars.
+# ==============================================================================
+
+spring.application.name=library-api
+
+# PostgreSQL Production Database Configuration (Required environment variables)
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Connection Pool Tuning (HikariCP)
+spring.datasource.hikari.maximum-pool-size=15
+spring.datasource.hikari.minimum-idle=5
+spring.datasource.hikari.idle-timeout=300000
+
+# JPA / Hibernate (Prod: validate schema strictly; never auto-alter tables)
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# JWT Stateless Security Configuration
+jwt.secret=${JWT_SECRET}
+jwt.expiration=${JWT_EXPIRATION:3600000}
+
+# Swagger / OpenAPI Documentation (Restricted or disabled in production)
+springdoc.api-docs.enabled=${SWAGGER_ENABLED:false}
+springdoc.swagger-ui.enabled=${SWAGGER_ENABLED:false}
+
+# Tomcat Connector Locale Limit
+server.tomcat.max-locale-count=50
+
+# Error Responses & Production Logging (Never expose stack traces)
+server.error.include-stacktrace=never
+server.error.include-message=never
+logging.level.root=WARN
+logging.level.com.gmao.itm.library_api=INFO
+logging.level.org.springframework.security=WARN

@@ -255,4 +255,4 @@ To consume `library-api` from a web frontend, mobile client (e.g., Flutter), or 
 
 ## 10. License
 
-This project is licensed under the **MIT License** — see the [`LICENSE`](LICENSE) file in the root directory for details.
+This project is licensed under the **MIT License** — see the [`LICENSE`](LICENSE.md) file in the root directory for details.
